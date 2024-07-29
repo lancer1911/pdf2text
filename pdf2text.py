@@ -5,17 +5,22 @@ from pdf2image import convert_from_path
 from docx import Document
 import os
 from tkinter import Tk, filedialog
-from tqdm import tqdm  # 导入 tqdm 库
+from tqdm import tqdm
 
-# 设置 tesseract 路径
-pytesseract.pytesseract.tesseract_cmd = '/usr/local/bin/tesseract'
+def set_tesseract_path():
+    if os.name == 'nt':  # Windows
+        pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+        tessdata_dir = r'C:\Program Files\Tesseract-OCR\tessdata'
+    elif os.name == 'posix':  # macOS and Linux
+        pytesseract.pytesseract.tesseract_cmd = '/usr/local/bin/tesseract'
+        tessdata_dir = '/usr/local/share/tessdata'
+    else:
+        raise OSError("Unsupported operating system.")
+    
+    if not os.path.exists(tessdata_dir):
+        raise FileNotFoundError(f"Tessdata directory not found: {tessdata_dir}")
 
-# 确保 TESSDATA_PREFIX 环境变量设置正确
-tessdata_dir = '/usr/local/share/tessdata'
-if not os.path.exists(tessdata_dir):
-    raise FileNotFoundError(f"Tessdata directory not found: {tessdata_dir}")
-
-os.environ['TESSDATA_PREFIX'] = tessdata_dir
+    os.environ['TESSDATA_PREFIX'] = tessdata_dir
 
 def pdf_to_images(pdf_path):
     try:
@@ -72,6 +77,8 @@ def main():
     parser.add_argument('-l', '--language', default='e', help="Language for OCR: -l:c for Chinese, -l:e for English, -l:g for German, -l:j for Japanese, -l:f for French. Combine languages with -l:ce for Chinese and English")
 
     args = parser.parse_args()
+
+    set_tesseract_path()
 
     if args.file:
         pdf_file = args.file
