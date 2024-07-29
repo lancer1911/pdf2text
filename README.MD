@@ -39,6 +39,19 @@ pip install -r requirements.txt
 
 ### 4. Install Tesseract OCR and Poppler
 
+#### Windows
+
+1. Download and install Tesseract OCR from [Tesseract at UB Mannheim](https://github.com/UB-Mannheim/tesseract/wiki).
+2. Download and install Poppler from [Poppler for Windows](http://blog.alivate.com.au/poppler-windows/).
+3. Add Tesseract and Poppler to your system PATH.
+4. Ensure the `TESSDATA_PREFIX` environment variable points to the Tesseract language data directory. You can set it in your terminal:
+
+```bash
+setx TESSDATA_PREFIX "C:\Program Files\Tesseract-OCR\tessdata"
+```
+
+#### macOS
+
 Install Tesseract OCR and Poppler using Homebrew:
 
 ```bash
@@ -51,6 +64,42 @@ Ensure the `TESSDATA_PREFIX` environment variable points to the Tesseract langua
 
 ```bash
 export TESSDATA_PREFIX=/usr/local/share/
+```
+
+#### Linux
+
+Install Tesseract OCR and Poppler using your package manager. For example, on Ubuntu:
+
+```bash
+sudo apt update
+sudo apt install tesseract-ocr poppler-utils
+```
+
+To install additional language packs for Tesseract, you can use the following command:
+
+```bash
+sudo apt install tesseract-ocr-<language-code>
+```
+
+Replace `<language-code>` with the code for the language you want to install. Here are some examples:
+
+- `eng` for English
+- `chi-sim` for Simplified Chinese
+- `chi-tra` for Traditional Chinese
+- `deu` for German
+- `jpn` for Japanese
+- `fra` for French
+
+To install multiple languages at once, you can use:
+
+```bash
+sudo apt install tesseract-ocr-eng tesseract-ocr-chi-sim tesseract-ocr-chi-tra tesseract-ocr-deu tesseract-ocr-jpn tesseract-ocr-fra
+```
+
+Ensure the `TESSDATA_PREFIX` environment variable points to the Tesseract language data directory. You can set it in your terminal:
+
+```bash
+export TESSDATA_PREFIX=/usr/share/tesseract-ocr/4.00/tessdata/
 ```
 
 ### 5. Run the Script
@@ -86,4 +135,4 @@ This script is intended for basic text extraction and does not retain the origin
 
 ## License
 
-This project is licensed under the MIT License. 
+This project is licensed under the MIT License.
