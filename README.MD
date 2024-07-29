@@ -55,7 +55,7 @@ export TESSDATA_PREFIX=/usr/local/share/
 
 ### 5. Run the Script
 
-In the directory containing `pdf2docx.py` and `requirements.txt`, use the following commands to run the script:
+In the directory containing `pdf2docx.py`, use the following commands to run the script:
 
 - To perform OCR and output as DOCX format with Chinese and English recognition, specifying the PDF file through the command line:
 
