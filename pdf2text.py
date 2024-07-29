@@ -60,6 +60,7 @@ def get_pdf_file():
 def parse_language(lang_input):
     lang_dict = {
         'c': 'chi_sim',
+        't': 'chi_tra',
         'e': 'eng',
         'g': 'deu',
         'j': 'jpn',
