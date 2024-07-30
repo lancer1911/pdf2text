@@ -42,7 +42,7 @@ pip install -r requirements.txt
 #### Windows
 
 1. Download and install Tesseract OCR from [Tesseract at UB Mannheim](https://github.com/UB-Mannheim/tesseract/wiki).
-2. Download and install Poppler from [Poppler for Windows](http://blog.alivate.com.au/poppler-windows/).
+2. Download and install Poppler from [Poppler for Windows](https://poppler.freedesktop.org/).
 3. Add Tesseract and Poppler to your system PATH.
 4. Ensure the `TESSDATA_PREFIX` environment variable points to the Tesseract language data directory. You can set it in your terminal:
 
